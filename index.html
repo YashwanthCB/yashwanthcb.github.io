@@ -1,8 +1,176 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Game Demo</title>
-    </head>
-    <body>
-        demo1
-    </body>
+<head>
+    <title>Demo 1</title>
+<style>
+
+.grid-container > div > span {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid black;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.grid-container > div > span > input {
+    width: 50px;
+    height: 50px;
+    background: white !important;
+    border: none;
+}
+</style>
+</head>
+<body>
+<span id="timer"></span>
+<input type="button" onclick="startGame()" value="Start"/>
+<input type="button" onclick="resetGame()" value="Reset"/>
+<input type="button" onclick="showStrategy()" value="Show Strategy"/>
+<input type="button" onclick="hideStrategy()" value="Hide Strategy"/>
+
+<br/>
+<br/>
+
+<div class="grid-container" id="matrix">
+</div>
+
+
+<script type="text/javascript">
+
+    var matrix = document.getElementById("matrix")
+    var value = 0
+
+   var values = [
+" "," ",25," "," ","  "," "," "," "," ","  "," ",50," ","  "," "," ",
+" "," "," "," "," "," "," "," "," "," ",42," "," "," "," "," "," ",
+41," "," "," "," ",53," "," "," "," "," "," "," "," "," ",22," ",
+" "," "," "," ",9," "," ",37," "," ",10," "," "," "," "," "," ",
+" "," "," ",57," "," ",17," "," "," "," "," "," "," ",14," ",34,
+" "," ",5," "," "," "," ",45," "," "," "," ",6," "," "," "," ",
+" "," "," "," "," "," "," "," "," ",38," "," ",26," "," ",18," ",
+" "," "," ",49," "," ",29," "," "," "," "," "," "," "," "," "," ",
+" "," "," "," "," ",1," "," "," "," "," ",54," "," "," "," "," ",
+" ",13," "," "," "," "," "," "," "," ",2," "," "," ",46,58," ",
+" "," "," "," ",33," "," ",21," "," "," "," "," ",30," "," "," ",
+" "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ",
+" "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ",
+" "," "," "," "," ",55," "," "," "," "," "," "," "," "," "," "," ",
+" "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ",
+39," "," ",3," ",27," ",43," ",52," "," "," "," ",32," ",16,
+" "," "," "," "," "," "," "," "," "," "," ",28," "," "," "," "," ",
+" ",47," "," "," "," ",11," "," "," "," "," "," "," ",56," "," ",
+" "," "," "," "," "," "," "," "," "," ",24," ",4," "," "," "," ",
+" "," "," "," "," "," "," "," "," "," "," "," "," ",48," "," ",60,
+" "," ",59," ",7," "," ",51," "," "," "," "," "," ",8,44," ",
+" "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ",
+" ",15," "," "," "," ",31,35," "," ",12,40," "," "," "," "," ",
+" "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," ",
+" "," "," ",19," "," "," "," "," "," "," "," "," ",20," "," ",36,
+" "," "," "," "," ",23," "," "," "," "," "," "," "," "," "," "," "]
+
+
+
+    for(var i = 0, k = 0; i < 26; i++)
+    {
+        for(var j = 0; j < 17; j++)
+        {
+            value = values[k++] //generateNumber("1"); //values[a + b];
+            if(j == 8 || i == 12)
+            {
+                matrix.innerHTML += '<span><input name="hin" hidden type="button" value=" "style="background:#77f; width: 35px; height: 35px; display: hidden;" /> </span>'
+                
+            }
+            else
+            {
+
+                matrix.innerHTML += '<span><input type="button" value=\"'+value+'\" onclick="clickEvent(this)"style="width: 35px; height: 35px;"> </span>'
+            }
+            // value = values[k++]
+            // matrix.innerHTML += '<span><input type="button" value=\"'+value+'\" onclick="clickEvent(this)"style="width: 35px; height: 35px;"> </span>'
+        }
+        if(i != 12)
+        {
+            matrix.innerHTML  += "<br/>"
+        }
+        else
+        {
+            matrix.innerHTML += "<br hidden id='hidebr'/>"
+        }
+    }
+    
+    var prevNum = 0;
+    var score = 0;
+    var over = false;
+    function clickEvent(el)
+    {
+        el.style="width: 35px; height: 35px;background: #7f7;"
+        let num = parseInt(el.value)
+        if(num - prevNum === 1 && !over)
+        {
+            score++;
+            prevNum = num;
+        }
+        else 
+        {
+            over = true;
+        }
+    }
+    function showStrategy() 
+    {
+        console.log(document.getElementsByName("hin").forEach( el => {
+            el.removeAttribute("hidden")
+        }))
+        document.getElementById("hidebr").removeAttribute("hidden")
+    }
+    function hideStrategy() 
+    {
+        console.log(document.getElementsByName("hin").forEach( el => {
+            el.setAttribute("hidden", "true")
+        }))
+        document.getElementById("hidebr").setAttribute("hidden", "true")
+    }
+    function genQuad()
+    {
+        for(var i = 0; i < 12; i++)
+        {
+            for(var j = 0; j < 8; j++)
+            {
+
+            }
+        }
+    }
+    var time = 4;
+    var timer = () => {
+        document.getElementById("timer").innerHTML = time--;
+        if(time >=0) {
+            setTimeout(timer, 1000)
+        }
+        else {
+            showScore()
+        }
+    }
+
+    function showScore() {
+        alert("SCORE: " + score)
+    }
+    function startGame()
+    {
+        if(time <= 0)
+        {
+            alert("REFRESH PAGE")
+        }
+        else
+        {
+            timer()
+        }
+    }
+    function resetGame()
+    {
+        window.location.reload(false)
+        window.location = window.location
+    }
+</script>
+
+</body>
 </html>
