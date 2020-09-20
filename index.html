@@ -1,44 +1,134 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Demo 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
+*{
+    margin:0;
+    padding:0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
+}
+body{
+    max-height: 100vh;
+    background-color: rgb(175, 175, 175);
+}
+
+.wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    transform: scale(1);
+ 
+}
+.container-2{
+    position: relative;
+    margin: 1rem 0rem;
+    
+}
+.container-2 > *{
+    margin: 0 1rem;
+    padding: 12px;
+    font-size:19px;
+    outline: none;
+    border:none;
+    border-radius: 7px;
+}
+.container-2 > input:active{
+    background: dodgerblue;
+    color:#fff;
+}
+.grid-container{
+    margin: 1rem;
+}
+#timer{
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top:25%;
+    display: flex;
+    text-align: center;
+    color: ghostwhite;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid black;
+    font-size: 200px;
+    background: lightgreen;
+    border-radius: 50%;
+    box-shadow:0 0 12px #333333;
+}
+
+@media Screen and (max-width:600px){
+    #btn{
+        font-size: 14px;
+        padding:6px;
+    }
+}
+ 
 .grid-container > div > span {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid black;
   text-align: center;
   vertical-align: middle;
   font-size: 10px;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
 }
 
 .grid-container > div > span > input {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     background: white !important;
     border: none;
 }
+
+@media Screen and (max-width:600px){
+    .wrapper{
+        grid-template-columns: 1fr;
+    }
+}
+
+#timer{
+    animation: animatetime 1s linear infinite;
+}
+@keyframes animatetime{
+    from{
+        transform: scale(0.7);
+
+    }
+    to{
+        transform: scale(1);
+    }
+}
+
 </style>
 </head>
 <body>
-<span id="timer"></span>
+
+
+ 
+
+<div class="wrapper">
+<div class="container-1">
+<div class="grid-container" id="matrix"></div>
+</div>
+<div class="container-2">
+    <span id="timer"></span>
 <input type="button" onclick="startGame()" value="Start"/>
 <input type="button" onclick="resetGame()" value="Reset"/>
 <input type="button" onclick="showStrategy()" value="Show Strategy"/>
 <input type="button" onclick="hideStrategy()" value="Hide Strategy"/>
+</div>
+</div>
 
-<br/>
-<br/>
-
-<div class="grid-container" id="matrix">
 </div>
 
 
 <script type="text/javascript">
-
+document.body.style.zoom = "80%";   
     var matrix = document.getElementById("matrix")
+    matrix.style.display = "none";
     var value = 0
 
    var values = [
@@ -78,13 +168,13 @@
             value = values[k++] //generateNumber("1"); //values[a + b];
             if(j == 8 || i == 12)
             {
-                matrix.innerHTML += '<span><input name="hin" hidden type="button" value=" "style="background:#77f; width: 35px; height: 35px; display: hidden;" /> </span>'
+                matrix.innerHTML += '<span><input id="btn" name="hin" hidden type="button" value=" "style="background:#77f; width: 35px; height: 35px; display: hidden;" /> </span>'
                 
             }
             else
             {
 
-                matrix.innerHTML += '<span><input type="button" value=\"'+value+'\" onclick="clickEvent(this)"style="width: 35px; height: 35px;"> </span>'
+                matrix.innerHTML += '<span><input id="btn" type="button" value=\"'+value+'\" onclick="clickEvent(this)"style="width: 35px; height: 35px;"> </span>'
             }
             // value = values[k++]
             // matrix.innerHTML += '<span><input type="button" value=\"'+value+'\" onclick="clickEvent(this)"style="width: 35px; height: 35px;"> </span>'
@@ -101,19 +191,15 @@
     
     var prevNum = 0;
     var score = 0;
-    var over = false;
+    
     function clickEvent(el)
     {
-        el.style="width: 35px; height: 35px;background: #7f7;"
         let num = parseInt(el.value)
-        if(num - prevNum === 1 && !over)
+        if(num - prevNum === 1)
         {
+            el.style="width: 35px; height: 35px;background: #7f7;"
             score++;
             prevNum = num;
-        }
-        else 
-        {
-            over = true;
         }
     }
     function showStrategy() 
@@ -142,7 +228,7 @@
     }
     var time = 60;
     var timer = () => {
-        document.getElementById("timer").innerHTML = time--;
+        document.getElementById("timer").innerHTML = `<span id="time">${time--}</span>`;
         if(time >=0) {
             setTimeout(timer, 1000)
         }
@@ -154,17 +240,22 @@
     function showScore() {
         alert("SCORE: " + score)
     }
+    const timer_ = document.getElementById("timer");
+    timer_.style.display = "none";
     function startGame()
     {
+        matrix.style.display = "block";
         if(time <= 0)
         {
             alert("REFRESH PAGE")
         }
         else
         {
+            timer_.style.display="block"
             timer()
         }
     }
+
     function resetGame()
     {
         window.location.reload(false)
