@@ -20,6 +20,12 @@
         padding: 16px;
       }
     </style>
+    <script>
+      var link = document.createElement('meta');
+      link.setAttribute('name', 'viewport');
+      link.content = "width=device-width, initial-scale=1";
+      document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
 </head>
 <body>
 
@@ -148,7 +154,7 @@
   <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
   <div class="w3-xlarge w3-section">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <a href="https://instagram.com/noexitgamestudio" target="_blank"><i class="fa fa-instagram w3-hover-opacity"></i></a>
     <i class="fa fa-twitter w3-hover-opacity"></i>
   </div>
   <span>&copy; 2021 NoExiT game studio</span>
