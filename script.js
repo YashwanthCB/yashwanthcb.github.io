@@ -23,6 +23,7 @@ const projectsData = {
     apps: [
         {
             title: "VR Archviz Toolkit",
+            type:"App",
             description: `Engineered interactive ArchViz systems with runtime object transforms, material swapping, and spatial measurement tools.`,
             link: "https://www.youtube.com/watch?v=26LIzegw2Vk",
             newtab: true,
@@ -82,6 +83,32 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Render apps
     renderProjects(projectsData.apps, 'appsGrid');
+    
+    // Click to copy email (shared helper)
+    function setupCopyEmail(emailEl, copiedEl) {
+        if (!emailEl || !copiedEl) return;
+        emailEl.addEventListener('click', async () => {
+            const email = emailEl.getAttribute('data-email') || emailEl.textContent.trim();
+            try {
+                await navigator.clipboard.writeText(email);
+                copiedEl.classList.add('is-visible');
+                setTimeout(() => copiedEl.classList.remove('is-visible'), 1800);
+            } catch (err) {
+                const input = document.createElement('input');
+                input.value = email;
+                input.style.position = 'fixed';
+                input.style.opacity = '0';
+                document.body.appendChild(input);
+                input.select();
+                document.execCommand('copy');
+                document.body.removeChild(input);
+                copiedEl.classList.add('is-visible');
+                setTimeout(() => copiedEl.classList.remove('is-visible'), 1800);
+            }
+        });
+    }
+    setupCopyEmail(document.getElementById('heroEmail'), document.getElementById('heroEmailCopied'));
+    setupCopyEmail(document.getElementById('aboutEmail'), document.getElementById('aboutEmailCopied'));
     
     // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
