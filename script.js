@@ -6,12 +6,28 @@ const projectsData = {
             title: "Codename: Nightshade",
             type: "Game",
             description: "Nightshade is a stealth game inspired by Splinter Cell. Main features: World-state Memory AI",
-            image: "https://via.placeholder.com/400x200/00ff88/000000?text=Unreal+Engine+Game",
-            link: "project.html?id=nightshade"
+            image: "assets/nightshade.png",
+            link: "project.html?id=nightshade",
+            newtab: false
+        },
+        {
+            id: 'slippytiles',
+            title: "Slippy Tiles",
+            type: "Game",
+            description: "Slippy Tiles - Slide, align, and outsmart the board in a deceptively simple puzzle of precision and planning.",
+            image: "assets/st.png",
+            link: "project.html?id=slippytiles",
+            newtab: false
         }
     ],
     apps: [
-        
+        {
+            title: "VR Archviz Toolkit",
+            description: `Engineered interactive ArchViz systems with runtime object transforms, material swapping, and spatial measurement tools.`,
+            link: "https://www.youtube.com/watch?v=26LIzegw2Vk",
+            newtab: true,
+            image: "assets/xe.png",
+        }
     ]
 };
 
@@ -20,8 +36,11 @@ function createProjectCard(project) {
     const card = document.createElement('div');
     card.className = 'project-card';
     
+    // Determine target attribute based on newtab parameter
+    const targetAttr = project.newtab ? 'target="_blank" rel="noopener noreferrer"' : '';
+    
     card.innerHTML = `
-        <a href="${project.link}" style="text-decoration: none; color: inherit; display: block;">
+        <a href="${project.link}" ${targetAttr} style="text-decoration: none; color: inherit; display: block;">
             <div class="project-image">
                 <img src="${project.image}" alt="${project.title}" onerror="this.parentElement.textContent='No Image'">
             </div>
@@ -44,6 +63,12 @@ function renderProjects(projects, containerId) {
     if (!container) return;
     
     container.innerHTML = '';
+    
+    if (projects.length === 0) {
+        container.innerHTML = '<div class="blog-content"><p class="coming-soon">Coming soon...</p></div>';
+        return;
+    }
+    
     projects.forEach(project => {
         const card = createProjectCard(project);
         container.appendChild(card);

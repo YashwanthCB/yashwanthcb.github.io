@@ -17,8 +17,28 @@ const projectsDatabase = {
             'https://via.placeholder.com/800x450/00ccff/000000?text=AI+System'
         ],
         videos: [
-            'https://www.youtube.com/embed/DNXjnePVrZ0',
-            'https://www.youtube.com/embed/dQw4w9WgXcQ'
+            'https://www.youtube.com/embed/DNXjnePVrZ0'
+        ]
+    },
+    'slippytiles': {
+        id: 'slippytiles',
+        title: 'Slippy Tiles',
+        type: 'Game',
+        description: `Slippy Tiles - A minimalist puzzle game where every move matters.
+Slide tiles across the board to form perfect patterns and solve clever spatial challenges.
+Simple to learn, surprisingly deep to master.`,
+        links: [
+            { label: 'Play Game', url: 'https://yashwanth.itch.io/slippy-tiles' },
+            { label: 'Gameplay Teaser', url: 'https://www.youtube.com/watch?v=abIbjXpU4-g' }
+        ],
+        images: [
+            'https://via.placeholder.com/800x450/00ff88/000000?text=Gameplay+Screenshot+1',
+            'https://via.placeholder.com/800x450/00ccff/000000?text=Gameplay+Screenshot+2',
+            'https://via.placeholder.com/800x450/00ff88/000000?text=Level+Design',
+            'https://via.placeholder.com/800x450/00ccff/000000?text=AI+System'
+        ],
+        videos: [
+            'https://www.youtube.com/embed/abIbjXpU4-g'
         ]
     }
 };
