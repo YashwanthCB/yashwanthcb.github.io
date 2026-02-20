@@ -1,324 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Yashwanth CB</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    :root {
-      --bg: #050505;
-      --fg: #f5f5f5;
-      --muted: #888;
-      --accent: #f5ff3b;
-      --border: #222;
-      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
-      --font-mono: "JetBrains Mono", Menlo, Consolas, monospace;
-    }
-
-    * { box-sizing: border-box; }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: radial-gradient(circle at top left, #181818 0, #050505 45%, #000 100%);
-      color: var(--fg);
-      font-family: var(--font-main);
-      line-height: 1.6;
-    }
-
-    body {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: stretch;
-    }
-
-    main {
-      max-width: 960px;
-      width: 100%;
-      padding: 40px 20px 60px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.3fr);
-      gap: 40px;
-    }
-
-    @media (max-width: 768px) {
-      main {
-        grid-template-columns: 1fr;
-        padding: 24px 16px 40px;
-      }
-    }
-
-    /* Left column – big “HELLO” & intro */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 40px;
-      border-right: 1px solid var(--border);
-      padding-right: 32px;
-    }
-
-    @media (max-width: 768px) {
-      .hero {
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-        padding-right: 0;
-        padding-bottom: 24px;
-      }
-    }
-
-    .hello {
-      font-family: var(--font-mono);
-      font-size: 52px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      white-space: pre;
-      line-height: 1.05;
-    }
-
-    .hello span {
-      display: block;
-    }
-
-    .tagline {
-      max-width: 32rem;
-      margin-top: 32px;
-      font-size: 15px;
-      color: var(--muted);
-    }
-
-    .tagline strong {
-      color: var(--fg);
-      font-weight: 500;
-    }
-
-    /* Right column – content */
-    .content {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-    }
-
-    .section-title {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    .bio {
-      font-size: 15px;
-      color: #d0d0d0;
-    }
-
-    .bio a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .bio a:hover {
-      text-decoration: underline;
-    }
-
-    /* Latest explorations / projects */
-    .projects {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 14px;
-    }
-
-    .project {
-      border: 1px solid var(--border);
-      padding: 10px 11px;
-      border-radius: 8px;
-      transition: background 0.18s ease, border-color 0.18s ease, transform 0.1s ease;
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
-      background: rgba(255, 255, 255, 0.01);
-    }
-
-    .project:hover {
-      background: rgba(255, 255, 255, 0.04);
-      border-color: #333;
-      transform: translateY(-1px);
-    }
-
-    .project-title {
-      font-size: 14px;
-      font-weight: 500;
-      margin-bottom: 2px;
-    }
-
-    .project-meta {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .project-year {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    /* Contact + links */
-    .footer {
-      border-top: 1px solid var(--border);
-      padding-top: 18px;
-      margin-top: 12px;
-      font-size: 13px;
-      color: var(--muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .contact {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .contact a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .contact a:hover {
-      text-decoration: underline;
-    }
-
-    .socials {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      font-size: 12px;
-    }
-
-    .socials a {
-      color: var(--muted);
-      text-decoration: none;
-      padding-bottom: 1px;
-      border-bottom: 1px solid transparent;
-    }
-
-    .socials a:hover {
-      color: var(--fg);
-      border-bottom-color: var(--fg);
-    }
-
-    .nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-      font-size: 12px;
-    }
-
-    .nav a {
-      color: var(--muted);
-      text-decoration: none;
-      padding-bottom: 1px;
-      border-bottom: 1px solid transparent;
-    }
-
-    .nav a:hover {
-      color: var(--fg);
-      border-bottom-color: var(--fg);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yashwanth CB - Game Developer Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main>
-    <section class="hero">
-      <div>
-        <div class="hello">
-          <span>H</span>
-          <span>E</span>
-          <span>L</span>
-          <span>L</span>
-          <span>O</span>
-        </div>
-        <p class="tagline">
-          I'm <strong>Yashwanth CB</strong>, a game engine developer exploring the intersection of systems programming, rendering, and interactive art.
-        </p>
-      </div>
-    </section>
-
-    <section class="content">
-      <section>
-        <div class="section-title">About</div>
-        <p class="bio">
-          I design and build custom game engines, physics simulators, and multiplayer systems, with a focus on C++, low-level performance, and expressive tools for other creators.
-        </p>
-      </section>
-
-      <section class="projects">
-        <div class="section-title">Latest explorations</div>
-        <div class="project-grid">
-          <a href="#" class="project">
-            <div class="project-meta">Engine</div>
-            <div class="project-title">Aurora Engine</div>
-            <div class="project-year">2025.</div>
-          </a>
-          <a href="#" class="project">
-            <div class="project-meta">Simulation</div>
-            <div class="project-title">Rigid Body Sandbox</div>
-            <div class="project-year">2024.</div>
-          </a>
-          <a href="#" class="project">
-            <div class="project-meta">Networking</div>
-            <div class="project-title">Photon Playground</div>
-            <div class="project-year">2024.</div>
-          </a>
-          <a href="#" class="project">
-            <div class="project-meta">Tools</div>
-            <div class="project-title">Procedural Worlds Toolkit</div>
-            <div class="project-year">2023.</div>
-          </a>
-        </div>
-      </section>
-
-      <section>
-        <div class="section-title">Say hello</div>
-        <div class="footer">
-          <div class="contact">
-            <span>Email:</span>
-            <a href="mailto:youremail@example.com">youremail@example.com</a>
-          </div>
-
-          <div>
-            <div>Connect:</div>
-            <div class="socials">
-              <a href="#">GitHub</a>
-              <a href="#">LinkedIn</a>
-              <a href="#">X</a>
-              <a href="#">Behance</a>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="#home">Yashwanth CB</a>
             </div>
-          </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#games" class="nav-link">Games</a></li>
+                <li><a href="#apps" class="nav-link">Apps</a></li>
+                <li><a href="#blog" class="nav-link">Blog</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <nav class="nav">
-          <a href="#">Projects</a>
-          <a href="#">Tools</a>
-          <a href="#">Experiments</a>
-          <a href="#">Blog</a>
-          <a href="#">About</a>
-        </nav>
-      </section>
-    </section>
-  </main>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-name">Yashwanth CB</h1>
+                <p class="hero-intro">
+                    Game Developer | C++ | UnrealEngine.
+                </p>
+            </div>
+        </section>
+
+        <!-- Games Section -->
+        <section id="games" class="projects-section">
+            <h2 class="section-title">Games</h2>
+            <div class="projects-grid" id="gamesGrid">
+                <!-- Games will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- Apps Section -->
+        <section id="apps" class="projects-section">
+            <h2 class="section-title">Apps</h2>
+            <div class="projects-grid" id="appsGrid">
+                <!-- Apps will be dynamically inserted here -->
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="blog-section">
+            <h2 class="section-title">Blog</h2>
+            <div class="blog-content">
+                <p class="coming-soon">Coming soon...</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
