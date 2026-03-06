@@ -19,7 +19,7 @@ After 10 days of work, I now have a renderer grounded in physics, with image-bas
             'assets/pbr/4.png'
         ],
         videos: [
-            'https://www.youtube.com/watch?v=eXA3O2OZgcw'
+            'https://www.youtube.com/embed/eXA3O2OZgcw'
         ]
     },
     'slippytiles': {
@@ -123,3 +123,4 @@ document.addEventListener('DOMContentLoaded', () => {
     const project = projectsDatabase[projectId];
     renderProjectDetails(project);
 });
+
