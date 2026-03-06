@@ -1,23 +1,25 @@
 // Project data with detailed information
 const projectsDatabase = {
-    'nightshade': {
-        id: 'nightshade',
-        title: 'Codename: Nightshade',
-        type: 'Game',
-        description: "Nightshade - UE5 stealth game inspired by Splinter Cell with light exposure & sound detection. " +
-                    "World-Aware Memory AI - NPCs track environment changes, build suspicion & escalate investigations.",
+    
+    'pbr1': {
+        id: 'pbr1',
+        title: 'Vulkan PBR renderer in C++',
+        type: 'Renderer',
+        description: `I wanted to stop faking light, so I built a physically based renderer from scratch using C++ and Vulkan, diving into microfacet theory and the Cook–Torrance BRDF.
+Understanding energy conservation and the metallic workflow revealed how real materials interact with light, far beyond Phong-style approximations.
+After 10 days of work, I now have a renderer grounded in physics, with image-based lighting next on the roadmap.`,
         links: [
-            { label: 'GitHub', url: 'https://github.com/YashwanthCB/codename-nightshade' },
-            { label: 'Demo Gameplay Video', url: 'https://youtu.be/DNXjnePVrZ0' }
+            { label: 'Demo on Youtube', url: 'https://www.youtube.com/watch?v=eXA3O2OZgcw' },
+            { label: 'Linkedin', url: 'https://www.linkedin.com/posts/yashwanth-cb-b9aa1b12a_vulkan-graphicsprogramming-activity-7435560020093583361-i8Py' },
         ],
         images: [
-            'https://via.placeholder.com/800x450/00ff88/000000?text=Gameplay+Screenshot+1',
-            'https://via.placeholder.com/800x450/00ccff/000000?text=Gameplay+Screenshot+2',
-            'https://via.placeholder.com/800x450/00ff88/000000?text=Level+Design',
-            'https://via.placeholder.com/800x450/00ccff/000000?text=AI+System'
+            'assets/pbr/pbr1.png',
+            'assets/pbr/1.png',
+            'assets/pbr/2.png',
+            'assets/pbr/4.png'
         ],
         videos: [
-            'https://www.youtube.com/embed/DNXjnePVrZ0'
+            'https://www.youtube.com/watch?v=eXA3O2OZgcw'
         ]
     },
     'slippytiles': {
@@ -81,18 +83,7 @@ function renderProjectDetails(project) {
     const mediaGrid = document.getElementById('mediaGrid');
     mediaGrid.innerHTML = '';
 
-    // Add images
-    if (project.images && project.images.length > 0) {
-        project.images.forEach(imageUrl => {
-            const imageItem = document.createElement('div');
-            imageItem.className = 'media-item';
-            imageItem.innerHTML = `
-                <img src="${imageUrl}" alt="${project.title}" class="media-item-image" onerror="this.parentElement.style.display='none'">
-            `;
-            mediaGrid.appendChild(imageItem);
-        });
-    }
-
+    
     // Add videos
     if (project.videos && project.videos.length > 0) {
         project.videos.forEach(videoUrl => {
@@ -106,6 +97,19 @@ function renderProjectDetails(project) {
             mediaGrid.appendChild(videoItem);
         });
     }
+
+    // Add images
+    if (project.images && project.images.length > 0) {
+        project.images.forEach(imageUrl => {
+            const imageItem = document.createElement('div');
+            imageItem.className = 'media-item';
+            imageItem.innerHTML = `
+                <img src="${imageUrl}" alt="${project.title}" class="media-item-image" onerror="this.parentElement.style.display='none'">
+            `;
+            mediaGrid.appendChild(imageItem);
+        });
+    }
+
 
     // If no media, show message
     if ((!project.images || project.images.length === 0) && (!project.videos || project.videos.length === 0)) {

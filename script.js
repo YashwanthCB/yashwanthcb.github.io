@@ -2,6 +2,15 @@
 const projectsData = {
     games: [
         {
+            id: 'pbr-vulkan',
+            title: "Vulkan PBR renderer in C++",
+            type: "Renderer",
+            description: "Built a PBR renderer in C++ and Vulkan using the Cook–Torrance BRDF.",
+            image: "assets/pbr/pbr1.png",
+            link: "project.html?id=pbr1",
+            newtab: false
+        },
+        {
             id: 'nightshade',
             title: "Codename: Nightshade",
             type: "Game",
