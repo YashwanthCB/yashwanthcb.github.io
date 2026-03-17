@@ -9,7 +9,7 @@ const projectsDatabase = {
 Understanding energy conservation and the metallic workflow revealed how real materials interact with light, far beyond Phong-style approximations.
 After 10 days of work, I now have a renderer grounded in physics, with image-based lighting next on the roadmap.`,
         links: [
-            { label: 'Code on Github', url: 'https://github.com/YashwanthCB/vkPBR' },
+            { label: 'Demo on Youtube', url: 'https://www.youtube.com/watch?v=eXA3O2OZgcw' },
             { label: 'Linkedin', url: 'https://www.linkedin.com/posts/yashwanth-cb-b9aa1b12a_vulkan-graphicsprogramming-activity-7435560020093583361-i8Py' },
         ],
         images: [
@@ -20,6 +20,29 @@ After 10 days of work, I now have a renderer grounded in physics, with image-bas
         ],
         videos: [
             'https://www.youtube.com/embed/eXA3O2OZgcw'
+        ]
+    },
+    'nightshade': {
+        id: 'nightshade',
+        title: 'Codename: Nightshade',
+        type: 'Game',
+        description: "Nightshade - UE5 stealth game inspired by Splinter Cell with light exposure & sound detection. " +
+                    "World-Aware Memory AI - NPCs track environment changes, build suspicion & escalate investigations.",
+        links: [
+            { label: 'GitHub', url: 'https://github.com/YashwanthCB/codename-nightshade' },
+            { label: 'Demo Gameplay Video', url: 'https://youtu.be/DNXjnePVrZ0' }
+        ],
+        images: [
+            'https://via.placeholder.com/800x450/00ff88/000000?text=Gameplay+Screenshot+1',
+            'https://via.placeholder.com/800x450/00ccff/000000?text=Gameplay+Screenshot+2',
+            'https://via.placeholder.com/800x450/00ff88/000000?text=Level+Design',
+            'https://via.placeholder.com/800x450/00ccff/000000?text=AI+System'
+        ],
+        videos: [
+            'https://www.youtube.com/embed/DNXjnePVrZ0',
+            'https://www.youtube.com/embed/S7wU9jU-qwc',
+            'https://www.youtube.com/embed/ro_coETIUIo',
+            'https://www.youtube.com/embed/50F2qKZEuQ4'
         ]
     },
     'slippytiles': {
@@ -123,5 +146,3 @@ document.addEventListener('DOMContentLoaded', () => {
     const project = projectsDatabase[projectId];
     renderProjectDetails(project);
 });
-
-
