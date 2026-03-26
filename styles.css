@@ -357,6 +357,23 @@ body::before {
     color: var(--text-secondary);
     font-size: 1.1rem;
     line-height: 1.8;
+    margin: 0 0 1rem;
+}
+
+.about-games-intro {
+    margin-bottom: 0.35rem;
+}
+
+.about-games-list {
+    margin: 0 0 1.5rem 1.35rem;
+    padding: 0;
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.about-games-list li {
+    margin: 0.15rem 0;
 }
 
 .about-links {
