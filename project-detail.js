@@ -9,6 +9,7 @@ const projectsDatabase = {
 Understanding energy conservation and the metallic workflow revealed how real materials interact with light, far beyond Phong-style approximations.
 After 10 days of work, I now have a renderer grounded in physics, with image-based lighting next on the roadmap.`,
         links: [
+            { label: 'Github Source', url: 'https://github.com/YashwanthCB/vkPBR'},
             { label: 'Demo on Youtube', url: 'https://www.youtube.com/watch?v=eXA3O2OZgcw' },
             { label: 'Linkedin', url: 'https://www.linkedin.com/posts/yashwanth-cb-b9aa1b12a_vulkan-graphicsprogramming-activity-7435560020093583361-i8Py' },
         ],
